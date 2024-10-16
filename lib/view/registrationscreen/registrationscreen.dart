@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ui_using_global/controller/registration_screen_controller.dart';
 import 'package:ui_using_global/view/signinpage/signpage.dart';
-
-List mydatabase = [];
 
 class Registrationscreen extends StatefulWidget {
   const Registrationscreen({super.key});
@@ -15,6 +14,16 @@ class _RegistrationscreenState extends State<Registrationscreen> {
   TextEditingController regpasscontroller = new TextEditingController();
   TextEditingController reregpasscontroler = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        RegistrationScreenController.inisharedPrefs();
+      },
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,12 +118,11 @@ class _RegistrationscreenState extends State<Registrationscreen> {
                           backgroundColor: WidgetStatePropertyAll(
                         Colors.blue,
                       )),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          mydatabase = [
-                            regnamecontroller.text,
-                            reregpasscontroler.text
-                          ];
+                          RegistrationScreenController.addData(
+                              regnamecontroller.text, regpasscontroller.text);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(

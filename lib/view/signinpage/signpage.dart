@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_using_global/controller/registration_screen_controller.dart';
 import 'package:ui_using_global/view/homepage/homepage.dart';
 import 'package:ui_using_global/view/registrationscreen/registrationscreen.dart';
 
@@ -13,6 +14,16 @@ class _SignpageState extends State<Signpage> {
   TextEditingController signmailcontroller = new TextEditingController();
   TextEditingController signpasscontroller = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        RegistrationScreenController.getData();
+      },
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +58,8 @@ class _SignpageState extends State<Signpage> {
                     if (signmailcontroller.text == null ||
                         signmailcontroller.text.isEmpty) {
                       return "invalid email adress";
-                    } else if (!mydatabase.contains(signmailcontroller.text)) {
+                    } else if (!RegistrationScreenController.datalist
+                        .contains(signmailcontroller.text)) {
                       return "invalid email adress";
                     }
                   },
@@ -66,7 +78,8 @@ class _SignpageState extends State<Signpage> {
                     if (signpasscontroller.text == null ||
                         signpasscontroller.text.isEmpty) {
                       return "invalid password";
-                    } else if (!mydatabase.contains(signpasscontroller.text)) {
+                    } else if (!RegistrationScreenController.datalist
+                        .contains(signpasscontroller.text)) {
                       return "invalid password";
                     } else {
                       return null;
@@ -92,6 +105,8 @@ class _SignpageState extends State<Signpage> {
                                 builder: (context) => Homepage(),
                               ));
                         }
+
+                        RegistrationScreenController.getData();
                       },
                       child: Text("sign in")),
                 ),
