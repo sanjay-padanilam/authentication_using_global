@@ -55,12 +55,13 @@ class _SignpageState extends State<Signpage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15))),
                   validator: (value) {
-                    if (signmailcontroller.text == null ||
-                        signmailcontroller.text.isEmpty) {
+                    if (signmailcontroller.text.isEmpty) {
                       return "invalid email adress";
                     } else if (!RegistrationScreenController.datalist
                         .contains(signmailcontroller.text)) {
                       return "invalid email adress";
+                    } else {
+                      return null;
                     }
                   },
                 ),
@@ -75,8 +76,7 @@ class _SignpageState extends State<Signpage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15))),
                   validator: (value) {
-                    if (signpasscontroller.text == null ||
-                        signpasscontroller.text.isEmpty) {
+                    if (signpasscontroller.text.isEmpty) {
                       return "invalid password";
                     } else if (!RegistrationScreenController.datalist
                         .contains(signpasscontroller.text)) {

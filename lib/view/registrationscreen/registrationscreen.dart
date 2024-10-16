@@ -15,14 +15,14 @@ class _RegistrationscreenState extends State<Registrationscreen> {
   TextEditingController reregpasscontroler = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        RegistrationScreenController.inisharedPrefs();
-      },
-    );
-    super.initState();
-  }
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback(
+  //     (timeStamp) {
+  //       RegistrationScreenController.inisharedPrefs();
+  //     },
+  //   );
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +55,7 @@ class _RegistrationscreenState extends State<Registrationscreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15))),
                   validator: (value) {
-                    if (regnamecontroller.text == null ||
-                        regnamecontroller.text.isEmpty) {
+                    if (regnamecontroller.text.isEmpty) {
                       return "invalid email adress";
                     } else if (!regnamecontroller.text.contains("@")) {
                       return "invalid email adress";
@@ -76,8 +75,7 @@ class _RegistrationscreenState extends State<Registrationscreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15))),
                   validator: (value) {
-                    if (regpasscontroller.text == null ||
-                        regpasscontroller.text.isEmpty) {
+                    if (regpasscontroller.text.isEmpty) {
                       return "invalid password";
                     } else if (regpasscontroller.text.length < 6) {
                       return "invalid password";
@@ -97,8 +95,7 @@ class _RegistrationscreenState extends State<Registrationscreen> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15))),
                   validator: (value) {
-                    if (reregpasscontroler.text == null ||
-                        reregpasscontroler.text.isEmpty) {
+                    if (reregpasscontroler.text.isEmpty) {
                       return "invalid password";
                     } else if (reregpasscontroler.text !=
                         regpasscontroller.text) {
