@@ -15,14 +15,14 @@ class _RegistrationscreenState extends State<Registrationscreen> {
   TextEditingController reregpasscontroler = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
-  // void initState() {
-  //   WidgetsBinding.instance.addPostFrameCallback(
-  //     (timeStamp) {
-  //       RegistrationScreenController.inisharedPrefs();
-  //     },
-  //   );
-  //   super.initState();
-  // }
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        RegistrationScreenController.initsharedPref();
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,6 @@ class _RegistrationscreenState extends State<Registrationscreen> {
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(

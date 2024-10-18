@@ -18,6 +18,7 @@ class _SignpageState extends State<Signpage> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
+        RegistrationScreenController.initsharedPref();
         RegistrationScreenController.getData();
       },
     );
@@ -99,14 +100,13 @@ class _SignpageState extends State<Signpage> {
                           backgroundColor: WidgetStatePropertyAll(Colors.blue)),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          RegistrationScreenController.getData();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Homepage(),
                               ));
                         }
-
-                        RegistrationScreenController.getData();
                       },
                       child: Text("sign in")),
                 ),

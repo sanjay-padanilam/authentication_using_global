@@ -17,5 +17,6 @@ class RegistrationScreenController {
   static getData() async {
     databasename = prefs.getString('name');
     databasepassword = prefs.getString('pass');
+    print("$databasename,$databasepassword");
   }
 }
