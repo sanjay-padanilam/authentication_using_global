@@ -57,8 +57,8 @@ class _SignpageState extends State<Signpage> {
                   validator: (value) {
                     if (signmailcontroller.text.isEmpty) {
                       return "invalid email adress";
-                    } else if (!RegistrationScreenController.datalist
-                        .contains(signmailcontroller.text)) {
+                    } else if (signmailcontroller.text !=
+                        RegistrationScreenController.databasename) {
                       return "invalid email adress";
                     } else {
                       return null;
@@ -78,8 +78,8 @@ class _SignpageState extends State<Signpage> {
                   validator: (value) {
                     if (signpasscontroller.text.isEmpty) {
                       return "invalid password";
-                    } else if (!RegistrationScreenController.datalist
-                        .contains(signpasscontroller.text)) {
+                    } else if (signpasscontroller.text !=
+                        RegistrationScreenController.databasepassword) {
                       return "invalid password";
                     } else {
                       return null;
